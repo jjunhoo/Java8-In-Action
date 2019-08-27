@@ -46,7 +46,7 @@ public class BehaviorParameterization_5 {
     public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
         List<Apple> result = new ArrayList<>();
         for(Apple apple : inventory) {
-            // Predicate 클래스의 test 메소드를 사용하여 필터
+            // Predicate 클래스의 test 메소드를 사용하여 필터링
             if(p.test(apple)) {
                 result.add(apple);
             }

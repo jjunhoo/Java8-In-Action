@@ -14,11 +14,12 @@ public class BehaviorParameterization_2 {
         appleInventory.add(redApple);
         appleInventory.add(blueApple);
 
+        // Blue Apple - Filter
         appleInventory = filterGreenApples(appleInventory, "Blue");
         System.out.println("result : " + appleInventory.toString());
     }
-    /* 색(color) 파라미터화 */
-    public static List<Apple> filterGreenApples(List<Apple> inventory, String color) {
+    // 색(color) 파라미터화
+    private static List<Apple> filterGreenApples(List<Apple> inventory, String color) {
         List<Apple> result = new ArrayList<>();
         for(Apple apple : inventory) {
             if(color.equals(apple.getColor())) {

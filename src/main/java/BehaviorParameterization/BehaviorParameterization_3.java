@@ -14,10 +14,11 @@ public class BehaviorParameterization_3 {
         appleInventory.add(redApple);
         appleInventory.add(blueApple);
 
+        // 100 보다 큰 Apple - Filter
         appleInventory = filterGreenApples(appleInventory, 100);
         System.out.println("result : " + appleInventory.toString());
     }
-    /* 무게(weight) 파라미터화 */
+    // 무게(weight) 파라미터화
     public static List<Apple> filterGreenApples(List<Apple> inventory, int weight) {
         List<Apple> result = new ArrayList<>();
         for(Apple apple : inventory) {

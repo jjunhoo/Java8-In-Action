@@ -17,8 +17,8 @@ public class BehaviorParameterization_1 {
         appleInventory = filterGreenApples(appleInventory);
         System.out.println("result : " + appleInventory.toString());
     }
-    /* 녹색 사과 필터링 */
-    public static List<Apple> filterGreenApples(List<Apple> inventory) {
+    // 'Green' Apple 필터링
+    private static List<Apple> filterGreenApples(List<Apple> inventory) {
         List<Apple> result = new ArrayList<>();
         for(Apple apple : inventory) {
             if("Green".equals(apple.getColor())) {

@@ -44,14 +44,16 @@ public class BehaviorParameterization_5 {
         System.out.println("Blue Apple Filtering : " + blueApples.toString());
     }
     // 파라미터로 전달한 ApplePredicate 객체에 의해 filterApples 메소드의 동작 결정
-    public static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
+    private static List<Apple> filterApples(List<Apple> inventory, ApplePredicate p) {
         List<Apple> result = new ArrayList<>();
+
         for(Apple apple : inventory) {
             // Predicate 클래스의 test 메소드를 사용하여 필터링
             if(p.test(apple)) {
                 result.add(apple);
             }
         }
+
         return result;
     }
 }

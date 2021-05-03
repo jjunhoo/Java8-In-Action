@@ -12,13 +12,14 @@ public class BehaviorParameterization_6 {
         appleBox.add(greenApple);
         appleBox.add(yellowApple);
 
-        //prettyPrintApple(appleBox, new AppleFancyFormatter());
-        //prettyPrintApple(appleBox, new AppleSimpleFormatter());
+        prettyPrintApple(appleBox, new AppleFancyFormatter());
+        prettyPrintApple(appleBox, new AppleSimpleFormatter());
     }
-    /*public static void prettyPrintApple(List<Apple> inventory, AppleFormater formatter) {
+
+    private static void prettyPrintApple(List<Apple> inventory, AppleFormatter formatter) {
         for(Apple apple : inventory) {
             String output = formatter.accept(apple);
             System.out.println(output);
         }
-    }*/
+    }
 }

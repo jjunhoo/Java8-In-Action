@@ -8,13 +8,19 @@ public class Reducing {
     public static void main(String[] args) {
         List<Integer> numbers = Arrays.asList(3,4,5,1,2);
         // numbers List 총합
+        // identity : 0 (sum 초기값)
         int sum = numbers.stream().reduce(0, (a, b) -> a + b);
         System.out.println("sum : " + sum);
         System.out.println("========================================");
 
-        // numbers List 총합
+        // numbers List 총합 (메서드 레퍼런스 사용)
         int sum2 = numbers.stream().reduce(0, Integer::sum);
         System.out.println("sum2 : " + sum2);
+        System.out.println("========================================");
+
+        // numbers List 총합 (초기값이 없는 reduce - 스트림에 아무 요소가 없는 경우)
+        Optional<Integer> sum3 = numbers.stream().reduce((a,b) -> (a + b));
+        System.out.println("sum3 : " + sum3);
         System.out.println("========================================");
 
         // numbers List 가장 큰 수

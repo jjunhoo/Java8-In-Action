@@ -33,6 +33,23 @@ public class Grouping {
         );
         System.out.println("[dishesByCaloricLevel] : " + dishesByCaloricLevel);
         System.out.println("[NORMAL] : " + dishesByCaloricLevel.get(CaloricLevel.NORMAL));
+
+        // 다수준 그룹화
+        // 두 인수를 받는 팩토리 메서드 Collectors.gourpingBy 를 이용해서 항목을 다수준으로 그룹화 가능
+        // 바깥 쪽 groupingBy 메서드에 스트림의 항목을 분류할 두 번째 기준을 정의하는 내부 groupingBy 를 전달해서 두 수준으로 스트림의 항목을 그룹화
+        Map<Dish.Type, Map<CaloricLevel, List<Dish>>> dishedByTypeCaloricLevel = Dish.menu.stream().collect(
+                Collectors.groupingBy(Dish::getType,        // 외부 맵 키 : 첫 번째 수준의 분류 함수에서 분류한 키값 'FISH, MEAT, OTHER' 를 키값으로 갖음
+                        Collectors.groupingBy(dish -> {     // 외부 맵 값 : 두 번째 수준의 분류 함수의 기준 'NORMAL, DIET, FAT' 을 키값으로 갖음
+                            if (dish.getCalories() <= 400) {
+                                return CaloricLevel.DIET;
+                            } else if (dish.getCalories() <= 700) {
+                                return CaloricLevel.NORMAL;
+                            } else {
+                                return CaloricLevel.FAT;
+                            }
+                        }))
+        );
+        System.out.println("[다수준 그룹화] : " + dishedByTypeCaloricLevel);
     }
 
     public enum CaloricLevel { DIET, NORMAL, FAT }

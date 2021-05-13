@@ -2,9 +2,13 @@ package StreamDataCollector;
 
 import Stream.Dish;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 
 public class Grouping {
 
@@ -50,6 +54,16 @@ public class Grouping {
                         }))
         );
         System.out.println("[다수준 그룹화] : " + dishedByTypeCaloricLevel);
+
+        // 서브그룹으로 데이터 수집
+        // 메뉴 > 요리 개수 종류별 계산
+        Map<Dish.Type, Long> typesCount = Dish.menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.counting()));
+        System.out.println("[서브 그룹] : " + typesCount);
+
+        // 메뉴 > 요리별 가장 높은 칼로리 추출
+        Map<Dish.Type, Optional<Dish>> mostCaloricByType = Dish.menu.stream().collect(
+                Collectors.groupingBy(Dish::getType, Collectors.maxBy(Comparator.comparingInt(Dish::getCalories))));
+        System.out.println("[서브 그룹 > 요리별 가장 높은 칼로리 추출] : " + mostCaloricByType);
     }
 
     public enum CaloricLevel { DIET, NORMAL, FAT }

@@ -64,6 +64,17 @@ public class Grouping {
         Map<Dish.Type, Optional<Dish>> mostCaloricByType = Dish.menu.stream().collect(
                 Collectors.groupingBy(Dish::getType, Collectors.maxBy(Comparator.comparingInt(Dish::getCalories))));
         System.out.println("[서브 그룹 > 요리별 가장 높은 칼로리 추출] : " + mostCaloricByType);
+
+        // 메뉴 > 요리별 가장 높은 칼로리 추출
+        // 컬렉터 결과를 다른 형식에 적용하기
+        Map<Dish.Type, Dish> mostCaloricByType2 = Dish.menu.stream().collect(
+                Collectors.groupingBy(Dish::getType,
+                        Collectors.collectingAndThen(
+                                Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)
+                        )
+        );
+        System.out.println("[mostCaloricByType2] : " + mostCaloricByType2);
+
     }
 
     public enum CaloricLevel { DIET, NORMAL, FAT }

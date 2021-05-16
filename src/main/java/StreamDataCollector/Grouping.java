@@ -75,6 +75,10 @@ public class Grouping {
         );
         System.out.println("[mostCaloricByType2] : " + mostCaloricByType2);
 
+        // 메뉴에 있는 모든 요리의 칼로리 합계
+        Map<Dish.Type, Integer> totalColoriesByType = Dish.menu.stream().collect(Collectors.groupingBy(Dish::getType,
+                                                        Collectors.summingInt(Dish::getCalories)));
+        System.out.println("[메뉴별 요리 칼로리 합계] : " + totalColoriesByType);
     }
 
     public enum CaloricLevel { DIET, NORMAL, FAT }

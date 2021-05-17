@@ -2,13 +2,12 @@ package StreamDataCollector;
 
 import Stream.Dish;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
+
+import static java.util.stream.Collectors.toSet;
 
 public class Grouping {
 
@@ -71,14 +70,29 @@ public class Grouping {
                 Collectors.groupingBy(Dish::getType,
                         Collectors.collectingAndThen(
                                 Collectors.maxBy(Comparator.comparingInt(Dish::getCalories)), Optional::get)
-                        )
+                )
         );
         System.out.println("[mostCaloricByType2] : " + mostCaloricByType2);
 
         // 메뉴에 있는 모든 요리의 칼로리 합계
         Map<Dish.Type, Integer> totalColoriesByType = Dish.menu.stream().collect(Collectors.groupingBy(Dish::getType,
-                                                        Collectors.summingInt(Dish::getCalories)));
+                Collectors.summingInt(Dish::getCalories)));
         System.out.println("[메뉴별 요리 칼로리 합계] : " + totalColoriesByType);
+
+        // 각 요리 형식에 존재하는 모든 칼로리 레벨 추출
+        Map<Dish.Type, Set<CaloricLevel>> caloricLevelaByType = Dish.menu.stream().collect(
+                Collectors.groupingBy(Dish::getType, Collectors.mapping(dish -> {
+                    if (dish.getCalories() <= 400) {
+                        return CaloricLevel.DIET;
+                    } else if (dish.getCalories() <= 700) {
+                        return CaloricLevel.NORMAL;
+                    } else {
+                        return CaloricLevel.FAT;
+                    }
+                },
+        toSet())));
+
+        System.out.println("[caloricLevelaByType] : " + caloricLevelaByType);
     }
 
     public enum CaloricLevel { DIET, NORMAL, FAT }

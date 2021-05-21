@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.*;
 
@@ -45,5 +46,12 @@ public class Partitioning {
         // 채식, 비채식 요리별 개수
         Map<Boolean, Long> collect2 = Dish.menu.stream().collect(partitioningBy(Dish::isVegetarian, counting()));
         System.out.println("[collect2] : " + collect2);
+
+        // 숫자를 소수와 비소수로 분할하기
+        System.out.println("[isPrime] : " + isPrime(5));
+    }
+    /* 숫자를 소수와 비소수로 분할하기 */
+    private static boolean isPrime(int candidate) {
+        return IntStream.range(2, candidate).noneMatch(i -> candidate % i == 0);
     }
 }

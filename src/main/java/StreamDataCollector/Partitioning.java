@@ -49,9 +49,18 @@ public class Partitioning {
 
         // 숫자를 소수와 비소수로 분할하기
         System.out.println("[isPrime] : " + isPrime(5));
+
+        System.out.println("[isPrime2] : " + isPrime2(7));
     }
     /* 숫자를 소수와 비소수로 분할하기 */
     private static boolean isPrime(int candidate) {
         return IntStream.range(2, candidate).noneMatch(i -> candidate % i == 0);
+    }
+
+    private static boolean isPrime2 (int candidate) {
+        System.out.println("[candidate] : " + candidate);
+        int candidateRoot = (int) Math.sqrt((double) candidate);
+        System.out.println("[candidateRoot ] : " + candidateRoot);
+        return IntStream.rangeClosed(2, candidateRoot).noneMatch(i -> candidate % i == 0);
     }
 }

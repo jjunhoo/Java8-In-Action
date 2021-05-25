@@ -49,8 +49,8 @@ public class Partitioning {
 
         // 숫자를 소수와 비소수로 분할하기
         System.out.println("[isPrime] : " + isPrime(5));
-
         System.out.println("[isPrime2] : " + isPrime2(7));
+        System.out.println("[isPrime3] : " + partitionPrimes(9));
     }
     /* 숫자를 소수와 비소수로 분할하기 */
     private static boolean isPrime(int candidate) {
@@ -58,9 +58,11 @@ public class Partitioning {
     }
 
     private static boolean isPrime2 (int candidate) {
-        System.out.println("[candidate] : " + candidate);
         int candidateRoot = (int) Math.sqrt((double) candidate);
-        System.out.println("[candidateRoot ] : " + candidateRoot);
         return IntStream.rangeClosed(2, candidateRoot).noneMatch(i -> candidate % i == 0);
+    }
+    // 소수, 비소수 partitioning
+    private static Map<Boolean, List<Integer>> partitionPrimes(int n) {
+        return IntStream.rangeClosed(2, n).boxed().collect(partitioningBy(candidate -> isPrime(candidate)));
     }
 }

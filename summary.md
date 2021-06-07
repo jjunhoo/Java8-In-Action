@@ -40,7 +40,7 @@ formula.sqrt(16);
 ## 2. 람다식
 
 ### 람다식이란
-람다식(Lambda expression)은 메소드를 하나의 '식(expression)'으로 표현한 것으로 메서드를 람다식으로 표현하면 메소드의 이름과 반환값이 없어지므로, 람다식을 '익명 함수(anonymous function)'이라고도 함
+람다식(lambda expression)은 메소드를 하나의 '식(expression)'으로 표현한 것으로 메서드를 람다식으로 표현하면 메소드의 이름과 반환값이 없어지므로, 람다식을 '익명 함수(anonymous function)'이라고도 함
 
 
 #### 일반 메소드 사용법
@@ -92,7 +92,7 @@ int min(int x, int y) {
 interface Calc { // 함수형 인터페이스의 선언
     public int min(int x, int y);
 }
-public class Lambda {
+public class lambda {
 public static void main(String[] args){
         Calc minNum = (x, y) -> x < y ? x : y; // 추상 메소드의 구현
         System.out.println(minNum.min(3, 4));  // 함수형 인터페이스의 사용
@@ -123,7 +123,7 @@ while(iterator.hasNext()) {
 #### 자바 8 이후 코드
 ````JAVA
 List<String> list = Arrays.asList("김두한", "구마적", "신마적");
-Stream<String> stream = list.stream();
+stream<String> stream = list.stream();
 stream.forEach(name -> System.out.println(name));
 ````
 ````
@@ -144,7 +144,7 @@ public static void main(String[] args) {
     new Student("신마적",95)
   );
   
-  Stream<Student> stream = list.stream();
+  stream<Student> stream = list.stream();
   stream.forEach(s -> {
     String name = s.getName();
     int score = s.getScore();
@@ -177,10 +177,10 @@ public class ParallelEx {
   public static void main(String[] args) {
     List<String> list = Arrays.asList("김두한","구마적","신마적","람다식","병렬처리");
 
-    Stream<String> stream = list.stream();
+    stream<String> stream = list.stream();
     stream.forEach(ParallelEx::print);
 
-    Stream<String> parallelStream = list.parallelStream();
+    stream<String> parallelStream = list.parallelStream();
     parallelStream.forEach(ParallelEx::print);
   }
 

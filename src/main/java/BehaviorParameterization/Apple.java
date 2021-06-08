@@ -1,4 +1,4 @@
-package BehaviorParameterization;
+package behaviorparameterization;
 
 public class Apple {
     String name;

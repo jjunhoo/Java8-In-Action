@@ -1,4 +1,4 @@
-package BehaviorParameterization;
+package behaviorparameterization;
 
 public class AppleFancyFormatter implements AppleFormatter {
     @Override

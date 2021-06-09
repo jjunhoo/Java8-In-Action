@@ -1,4 +1,4 @@
-package BehaviorParameterization;
+package behaviorparameterization;
 
 import java.util.ArrayList;
 import java.util.Arrays;

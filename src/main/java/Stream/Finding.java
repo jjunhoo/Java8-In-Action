@@ -1,4 +1,4 @@
-package Stream;
+package stream;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Finding {
         System.out.println("isHealthyMenu2 : " + isHealthyMenu2());
 
         // ifPresent : 값이 있으면 주어진 블록문 실행
-        // Optional : 값의 존재나 부재 여부를 표현하는 컨테이너 클래스
+        // OptionalClass : 값의 존재나 부재 여부를 표현하는 컨테이너 클래스
         // T get() : 값이 존재하면 값을 반환하고, 값이 없으면 NoSuchElementException 반환
         // T orElse(T other) : 값이 있으면 값을 반환하고, 값이 없으면 기본값을 반환
         Optional<Dish> dish = findVegetarianDish();

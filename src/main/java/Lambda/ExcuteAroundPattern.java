@@ -1,4 +1,4 @@
-package Lambda;
+package lambda;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -24,13 +24,13 @@ public class ExcuteAroundPattern {
     }
     public static String processFileLimited() throws IOException {
         // try - with - resource
-        try(BufferedReader br = new BufferedReader(new FileReader("C:/Users/Jun/IdeaProjects/Java8_In_Action/src/main/java/Lambda/data.txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader("C:/Users/Jun/IdeaProjects/Java8_In_Action/src/main/java/lambda/data.txt"))) {
             return br.readLine();
         }
     }
     // 파라미터에 따라 동작이 달라지도록 하기 위한 메소드 생성
     public static String processFile(BufferedReaderProcessor p) throws IOException {
-        try(BufferedReader br = new BufferedReader(new FileReader("C:/Users/Jun/IdeaProjects/Java8_In_Action/src/main/java/Lambda/data.txt"))) {
+        try(BufferedReader br = new BufferedReader(new FileReader("C:/Users/Jun/IdeaProjects/Java8_In_Action/src/main/java/lambda/data.txt"))) {
             return p.process(br);
         }
     }

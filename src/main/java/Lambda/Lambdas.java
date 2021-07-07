@@ -1,7 +1,7 @@
-package Lambda;
+package lambda;
 
-import BehaviorParameterization.Apple;
-import BehaviorParameterization.ApplePredicate;
+import behaviorparameterization.Apple;
+import behaviorparameterization.ApplePredicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;

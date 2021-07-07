@@ -1,6 +1,6 @@
-package StreamDataCollector;
+package streamdatacollector;
 
-import Stream.Dish;
+import stream.Dish;
 
 import java.util.Comparator;
 import java.util.List;

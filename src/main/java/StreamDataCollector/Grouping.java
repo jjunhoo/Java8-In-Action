@@ -1,11 +1,9 @@
-package StreamDataCollector;
+package streamdatacollector;
 
-import Stream.Dish;
+import stream.Dish;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
 import static java.util.stream.Collectors.*;
 
